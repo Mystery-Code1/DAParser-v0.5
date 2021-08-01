@@ -244,7 +244,7 @@ class Parser(object):
                 'pagination' : None,
                 'count' : len(self.block),
                 'value' : [self.DNSname_list, self.DNSparameter_list, self.DNSprice_list, self.DNSin_stock_list],
-                'name' : ["name", "parameter", "price", "in_stock"]
+                'name' : ["name", "parameter", "price", "availability"]
             }
 
         except Exception as ex:
@@ -300,7 +300,7 @@ class Parser(object):
                 file.write(json_obj)
 
         except Exception as ex:
-            print(type(ex))
+            print(ex)
 
 
             

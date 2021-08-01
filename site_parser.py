@@ -143,7 +143,7 @@ class Parser(object):
         
         self.DNSname_list = []
         
-        self.DNSinstock_list = []
+        self.DNSin_stock_list = []
         
         self.DNSparameter_list = []
         
@@ -217,13 +217,13 @@ class Parser(object):
                 #find all the elements, check and add them
                 avails = html_product_avails[index_avail_list].get_text().replace("\n", "").replace("\t", "")
                 if avails == "Товара нет в наличии":
-                    self.DNSinstock_list.append("Нет в наличии")
+                    self.DNSin_stock_list.append("Нет в наличии")
 
                 elif avails == "Цифровая версия":
-                    self.DNSinstock_list.append("Цифровая версия")
+                    self.DNSin_stock_list.append("Цифровая версия")
 
                 elif avails == "":
-                    self.DNSinstock_list.append("")
+                    self.DNSin_stock_list.append("")
 
                 else:
 
@@ -232,7 +232,7 @@ class Parser(object):
                     avail_list = BeautifulSoup(str(order_list[0]), "lxml")
                     html_count_list = avail_list.find("a", class_="order-avail-wrap__link ui-link ui-link_blue ui-link_pseudolink", tabindex="0")
 
-                    self.DNSinstock_list.append(html_count_list.get_text())
+                    self.DNSin_stock_list.append(html_count_list.get_text())
 
 
 
@@ -243,8 +243,8 @@ class Parser(object):
             return {
                 'pagination' : None,
                 'count' : len(self.block),
-                'value' : [self.DNSname_list, self.DNSparameter_list, self.DNSprice_list, self.DNSinstock_list],
-                'name' : ["name", "parameter", "price", "instock"]
+                'value' : [self.DNSname_list, self.DNSparameter_list, self.DNSprice_list, self.DNSin_stock_list],
+                'name' : ["name", "parameter", "price", "in_stock"]
             }
 
         except Exception as ex:
